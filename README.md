@@ -17,7 +17,7 @@ Install of required Node modules
 setup server.js (this is the node run page)
 routes.js (all the apps get their shizzle from the db here)
 setup layouts.ejs - using ejs for our to do form
-setup index.ejs, header.ejs, footer.ejs - you know what this does
+setup index.ejs, header.ejs, footer.ejs - you know what this does: using JQuery ansd Bootstrap in the header.
 setup the function components of the app
  +components/todo_table
  +components/add_todo
