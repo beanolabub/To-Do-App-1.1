@@ -27,6 +27,7 @@ setup the function components of the app
  
  TO DO 
  
+ Sort out the CSS files. SO far only using a little bootstrap.
  setup routes.js to get the data
  setup routes.js to add the actual to do items
  
