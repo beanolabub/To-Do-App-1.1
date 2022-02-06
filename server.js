@@ -19,3 +19,5 @@ app.use('/', routes);
 app.listen(3535, () => {
     console.log('listening on port 3535');
 });
+
+app.use('/js', express.static(path.join(__dirname, 'js')));
