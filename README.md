@@ -1,6 +1,6 @@
 # To-Do-App-1.1
-Stndard
-This is me working in the basics of just getting an app up and running. So 
+
+This is me working in the basics of just getting an app up and running.  
 
 Steps to initialise
 
