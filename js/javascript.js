@@ -15,7 +15,7 @@ function get_todos() {
 }
 
 function get_complete() {
-    var request = new XMLHttpRequest();
+     var request = new XMLHttpRequest();
      var requestURL = '/complete_todos';
      request.open('GET', requestURL);
      request.responseType = 'json';
