@@ -1,6 +1,6 @@
 # To-Do-App-1.1
 Early doors basic to do app
-This is me working in the basics of just getting an app up and running. So far I've made a db connection and got the basic thing running.
+This is me working in the basics of just getting an app up and running. So 
 
 So far I have 
 
@@ -27,9 +27,9 @@ setup the function components of the app
  setup routes.js to get the data
  setup routes.js to add the actual to do items
  
- TO DO 
- 
  Sort out the CSS files. SO far only using a little bootstrap.
+ Completed, done and delete.
+ 
  Date filtering
  
  
