@@ -39,6 +39,19 @@ router.post('/add_todo', (req, res) =>{
         console.log("@ /add_todo : " + todo + " added");
         res.redirect('/');
     })
-})
+});
+
+router.post('/complete_todo/:id', (req, res) =>{
+    const todo_id = req.params.id;
+    const queryString = "UPDATE todos SET COMPLETE = '1' WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /complete_todo: " + todo_id + " " + err);
+        }
+        console.log("@ /complete_todo : with id " + todo_id + " completed");
+        res.redirect('/');
+    })
+});
+
 
 module.exports = router;
