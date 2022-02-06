@@ -32,7 +32,7 @@ function printTodos(todos) {
     for (var i in todos ) {
         const todo_id = todos[i].todo_id;
         const todo = todos[i].TODO;
-        const todo_createdDate = todos[i].DATE_CREATED;
+        const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         var row = document.createElement('tr');
         var todo_cell = document.createElement('td');
         var todo_button = document.createElement('button');
@@ -66,8 +66,8 @@ function printCompleted(todos) {
     for (var i in todos ) {
         const todo_id = todos[i].todo_id;
         const todo = todos[i].TODO;
-        const todo_createdDate = todos[i].DATE_CREATED;
-        const todo_completedDate = todos[i].DATE_COMPLETE;
+        const todo_createdDate = formatDates(todos[i].DATE_CREATED);
+        const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
         var row = document.createElement('tr');
         var completed_cell = document.createElement('li');
         var completed_checkbox = document.createElement('i');
@@ -96,5 +96,11 @@ function deleteTodo(todo_id) {
     var form = document.getElementById("delete_todo_form");
     form.action = form.action + todo_id;
     form.submit();
+}
+
+function formatDates(date){
+    var formattedDate = date.replace(/T/, ' ').replace(/\..+/, '');
+    //alert(formattedDate);
+    return date = formattedDate;
 }
 
