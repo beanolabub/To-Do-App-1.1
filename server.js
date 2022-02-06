@@ -21,3 +21,4 @@ app.listen(3535, () => {
 });
 
 app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/css', express.static(path.join(__dirname, 'css')));

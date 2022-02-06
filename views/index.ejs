@@ -1,13 +1,16 @@
 <div id='container'>
-
+<div class='first'>
     <h1>To Do Application by Al</h1>
 
-    
+    <p>Add an item to the list</p>
     <%- include ('components/add_todo') %>
-    
-
+</div>    
+<div class='toDoList'>
     <%- include ('components/todo_table') %>
-
+</div>
+<div class='completedList'>
+    <%- include ('components/completed_table') %>
+</div>
     
 
 </div>

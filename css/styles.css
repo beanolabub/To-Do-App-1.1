@@ -1,3 +1,16 @@
 h1 {text-align:center;}
 p {text-align:center;}
 table {margin: 15pt}
+.first{
+background: none rgb(224, 187, 228);
+    color: rgb(0, 0, 0);
+}
+.toDoList{
+    background: none rgb(149, 125, 173);
+    color: rgb(0, 0, 0);
+}
+.completedList{
+    background: none rgb(210, 145, 188);
+    color: rgb(0, 0, 0);
+}
+li{margin-top: 10pt;}

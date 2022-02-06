@@ -53,5 +53,27 @@ router.post('/complete_todo/:id', (req, res) =>{
     })
 });
 
+router.post('/delete_todo/:id', (req, res) =>{
+    const todo_id = req.params.id;
+    const queryString = "DELETE FROM todos WHERE todo_id = ?"; //DELETE STATEMENT
+    conn.query(queryString, [todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to delete @ /delete_todo: " + todo_id + " " + err);
+        }
+        console.log("@ /delete_todo : with id " + todo_id + " deleted");
+        res.redirect('/');
+    })
+});
+
+router.get('/complete_todos', (req, res) =>{
+    const queryString = "SELECT * FROM todos WHERE complete = '1'"
+    conn.query(queryString, (err, rows, fields) =>{
+        if (err) {
+            console.log("failed to query @ /complete_todo: " + err);
+        }
+        console.log("Getting data from database at @ /complete_todos");
+        res.json(rows);
+    })
+});
 
 module.exports = router;
