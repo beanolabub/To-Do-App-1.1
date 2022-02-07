@@ -16,6 +16,10 @@ Install of required Node modules
 
 Created database - see attached .sql file
 
+initialised node ******** entry point is server.js
+created folder src
+
+
 setup server.js (this is the node run page)
 routes.js (all the apps get their shizzle from the db here)
 setup layouts.ejs - using ejs for our to do form
