@@ -34,7 +34,7 @@ function printTodos(todos) {
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         var row = document.createElement('tr');
-        var todo_cell0= document.createElement('td');
+        var todo_cell = document.createElement('td');
         var todo_cell2 = document.createElement('td');
         var todo_cell3 = document.createElement('td');
         var todo_trash = document.createElement('i');
@@ -46,13 +46,14 @@ function printTodos(todos) {
         todo_button.classList.add('fa-check');  
         todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
         todo_button.setAttribute('onMouseover', 'Click to mark as done');
-        todo_cell0.innerHTML = todo;        
+        todo_cell.innerHTML = todo;        
         todo_trash.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
         todo_trashButton.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
-        todo_cell0.append(todo_button);
+        todo_trashButton.setAttribute('onMouseover', 'Delete task');
+        todo_cell.append(todo_button);
         todo_cell2.innerHTML = todo_createdDate;  
         todo_cell3.append(todo_trash);
-        row.append(todo_cell0);
+        row.append(todo_cell);
         row.append(todo_cell2);
         row.append(todo_cell3);
         table.append(row);
@@ -68,23 +69,28 @@ function printCompleted(todos) {
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
         var row = document.createElement('tr');
-        var completed_cell = document.createElement('td');
+        var completed_cell = document.createElement('li');
         var completed_checkbox = document.createElement('i');
-        var uncomplete = '<a onclick="unCompleteTodo(' + todo_id +')"><i class="fa fa-recycle"></i></a>';
+        var incomplete = document.createElement('li');
+        incomplete.classList.add('fa');
+        incomplete.classList.add('fa-solid');
+        incomplete.classList.add('fa-circle-xmark');        
         var completed_cell2 = document.createElement('td');
-        
-        // uncomplete.classList.add('fa');   
-        // uncomplete.classList.add('fa-recycle');  
-        
-        // uncomplete.setAttribute('onclick', 'unCompleteTodo(' + todo_id +')');
-
+        var completed_cell3 = document.createElement('td');
+        var completed_cell4 = document.createElement('td');
         completed_cell.append(completed_checkbox);
-        completed_cell.innerHTML =  todo + uncomplete;
-        // completed_cell +=  uncomplete;
-        completed_cell2.innerHTML = todo_createdDate + ' -> '+todo_completedDate;        
+        completed_cell.innerHTML =  todo;
+        completed_cell2.innerHTML = 'Completed: <b>' + todo_completedDate + '</b>';        
+        completed_cell3.innerHTML = 'Created: <b>' + todo_createdDate + '</b>';  
+        incomplete.setAttribute('onclick', 'incompleteTodo(' + todo_id +')');
+        incomplete.setAttribute('onMouseover', 'Mark task incomplete');
+        completed_cell4.append(incomplete);  
         row.append(completed_cell);
         row.append(completed_checkbox);
+        row.append(completed_cell3);
         row.append(completed_cell2);
+        row.append(completed_cell4);
+        row.append(incomplete);
         table.append(row);
 
     }
@@ -96,14 +102,14 @@ function completeTodo(todo_id) {
     form.submit();
 }
 
-function unCompleteTodo(todo_id) {
-    var form = document.getElementById("uncomplete_todo_form");
+function deleteTodo(todo_id) {
+    var form = document.getElementById("delete_todo_form");
     form.action = form.action + todo_id;
     form.submit();
 }
 
-function deleteTodo(todo_id) {
-    var form = document.getElementById("delete_todo_form");
+function incompleteTodo(todo_id) {
+    var form = document.getElementById("incomplete_todo_form");
     form.action = form.action + todo_id;
     form.submit();
 }
