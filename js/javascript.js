@@ -34,7 +34,7 @@ function printTodos(todos) {
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         var row = document.createElement('tr');
-        var todo_cell = document.createElement('td');
+        var todo_cell0= document.createElement('td');
         var todo_cell2 = document.createElement('td');
         var todo_cell3 = document.createElement('td');
         var todo_trash = document.createElement('i');
@@ -46,13 +46,13 @@ function printTodos(todos) {
         todo_button.classList.add('fa-check');  
         todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
         todo_button.setAttribute('onMouseover', 'Click to mark as done');
-        todo_cell.innerHTML = todo;        
+        todo_cell0.innerHTML = todo;        
         todo_trash.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
         todo_trashButton.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
-        todo_cell.append(todo_button);
+        todo_cell0.append(todo_button);
         todo_cell2.innerHTML = todo_createdDate;  
         todo_cell3.append(todo_trash);
-        row.append(todo_cell);
+        row.append(todo_cell0);
         row.append(todo_cell2);
         row.append(todo_cell3);
         table.append(row);
