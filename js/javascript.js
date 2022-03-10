@@ -68,17 +68,22 @@ function printCompleted(todos) {
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
         var row = document.createElement('tr');
-        var completed_cell = document.createElement('li');
+        var completed_cell = document.createElement('td');
         var completed_checkbox = document.createElement('i');
+        var uncomplete = '<a onclick="unCompleteTodo(' + todo_id +')"><i class="fa fa-recycle"></i></a>';
         var completed_cell2 = document.createElement('td');
-        var completed_cell3 = document.createElement('td');
+        
+        // uncomplete.classList.add('fa');   
+        // uncomplete.classList.add('fa-recycle');  
+        
+        // uncomplete.setAttribute('onclick', 'unCompleteTodo(' + todo_id +')');
+
         completed_cell.append(completed_checkbox);
-        completed_cell.innerHTML =  todo;
-        completed_cell2.innerHTML = 'Completed: <b>' + todo_completedDate + '</b>';        
-        completed_cell3.innerHTML = 'Created: <b>' + todo_createdDate + '</b>';  
+        completed_cell.innerHTML =  todo + uncomplete;
+        // completed_cell +=  uncomplete;
+        completed_cell2.innerHTML = todo_createdDate + ' -> '+todo_completedDate;        
         row.append(completed_cell);
         row.append(completed_checkbox);
-        row.append(completed_cell3);
         row.append(completed_cell2);
         table.append(row);
 
@@ -87,6 +92,12 @@ function printCompleted(todos) {
 
 function completeTodo(todo_id) {
     var form = document.getElementById("complete_todo_form");
+    form.action = form.action + todo_id;
+    form.submit();
+}
+
+function unCompleteTodo(todo_id) {
+    var form = document.getElementById("uncomplete_todo_form");
     form.action = form.action + todo_id;
     form.submit();
 }

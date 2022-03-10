@@ -20,8 +20,12 @@ i{font-size:large;}
 }
 .fa{
     font-weight:bold;
+    cursor: pointer;
 }
 #container{
     width:500px;
     margin: 1rem auto auto auto;
+}
+li{
+    list-style:none;
 }

@@ -53,6 +53,18 @@ router.post('/complete_todo/:id', (req, res) =>{
     })
 });
 
+router.post('/uncomplete_todo/:id', (req, res) =>{
+    const todo_id = req.params.id;
+    const queryString = "UPDATE todos SET COMPLETE = '0' WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /uncomplete_todo: " + todo_id + " " + err);
+        }
+        console.log("@ /uncomplete_todo : with id " + todo_id + " marked incomplete");
+        res.redirect('/');
+    })
+});
+
 router.post('/delete_todo/:id', (req, res) =>{
     const todo_id = req.params.id;
     const queryString = "DELETE FROM todos WHERE todo_id = ?"; //DELETE STATEMENT
