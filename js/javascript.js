@@ -28,31 +28,30 @@ function get_complete() {
  }
 
 function printTodos(todos) {
-    var table = document.getElementById('todo_table');
+    let table = document.getElementById('todo_table');
     for (var i in todos ) {
         const todo_id = todos[i].todo_id;
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         var row = document.createElement('tr');
         var todo_cell = document.createElement('td');
-        var todo_button = document.createElement('button');
         var todo_cell2 = document.createElement('td');
         var todo_cell3 = document.createElement('td');
         var todo_trash = document.createElement('i');
+        var todo_button = document.createElement('i');
         var todo_trashButton = document.createElement('button');
-        todo_trash.classList.add('fa');        
+        todo_trash.classList.add('fa');   
         todo_trash.classList.add('fa-trash');  
+        todo_button.classList.add('fa');   
+        todo_button.classList.add('fa-check');  
         todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
         todo_button.setAttribute('onMouseover', 'Click to mark as done');
-        todo_cell.innerHTML = todo + '&nbsp;<br/>';        
-        todo_button.innerHTML = 'complete';
+        todo_cell.innerHTML = todo;        
         todo_trash.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
-        todo_trashButton.innerHTML = 'Delete ' + todo +')';    
         todo_trashButton.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
         todo_cell.append(todo_button);
-        todo_cell2.innerHTML = 'Created on <b>' + todo_createdDate + '</b>';  
+        todo_cell2.innerHTML = todo_createdDate;  
         todo_cell3.append(todo_trash);
-        todo_cell3.append(todo_trashButton);
         row.append(todo_cell);
         row.append(todo_cell2);
         row.append(todo_cell3);
@@ -75,8 +74,8 @@ function printCompleted(todos) {
         var completed_cell3 = document.createElement('td');
         completed_cell.append(completed_checkbox);
         completed_cell.innerHTML =  todo;
-        completed_cell2.innerHTML = 'Completed on <b>' + todo_completedDate + '</b>';        
-        completed_cell3.innerHTML = 'Created on <b>' + todo_createdDate + '</b>';  
+        completed_cell2.innerHTML = 'Completed: <b>' + todo_completedDate + '</b>';        
+        completed_cell3.innerHTML = 'Created: <b>' + todo_createdDate + '</b>';  
         row.append(completed_cell);
         row.append(completed_checkbox);
         row.append(completed_cell3);
@@ -101,6 +100,16 @@ function deleteTodo(todo_id) {
 function formatDates(date){
     var formattedDate = date.replace(/T/, ' ').replace(/\..+/, '');
     //alert(formattedDate);
-    return date = formattedDate;
+
+    
+    var date = new Date(date);
+
+    d=date.getDate()+
+          "/"+(date.getMonth())+
+          "/"+date.getFullYear();
+
+
+    return date = d;
+    
 }
 

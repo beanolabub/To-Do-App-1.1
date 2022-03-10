@@ -15,3 +15,13 @@ background: none rgb(224, 187, 228);
 }
 li{margin-top: 10pt;}
 i{font-size:large;}
+.fa-check{
+    margin-left: 2rem;
+}
+.fa{
+    font-weight:bold;
+}
+#container{
+    width:500px;
+    margin: 1rem auto auto auto;
+}
