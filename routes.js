@@ -53,18 +53,6 @@ router.post('/complete_todo/:id', (req, res) =>{
     })
 });
 
-router.post('/uncomplete_todo/:id', (req, res) =>{
-    const todo_id = req.params.id;
-    const queryString = "UPDATE todos SET COMPLETE = '0' WHERE todo_id = ?"; //UPDATE STATEMENT
-    conn.query(queryString, [todo_id], (err, rows, fields) => {
-        if (err){
-            console.log("failed to complete @ /uncomplete_todo: " + todo_id + " " + err);
-        }
-        console.log("@ /uncomplete_todo : with id " + todo_id + " marked incomplete");
-        res.redirect('/');
-    })
-});
-
 router.post('/delete_todo/:id', (req, res) =>{
     const todo_id = req.params.id;
     const queryString = "DELETE FROM todos WHERE todo_id = ?"; //DELETE STATEMENT
@@ -85,6 +73,18 @@ router.get('/complete_todos', (req, res) =>{
         }
         console.log("Getting data from database at @ /complete_todos");
         res.json(rows);
+    })
+});
+
+router.post('/incomplete_todo/:id', (req, res) =>{
+    const todo_id = req.params.id;
+    const queryString = "UPDATE todos SET COMPLETE = '0', DATE_COMPLETE = NULL WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /incomplete_todo: " + todo_id + " " + err);
+        }
+        console.log("@ /incomplete_todo : with id " + todo_id + " marked incomplete");
+        res.redirect('/');
     })
 });
 
