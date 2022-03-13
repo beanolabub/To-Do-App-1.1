@@ -45,7 +45,7 @@ function printTodos(todos) {
         todo_button.classList.add('fa');   
         todo_button.classList.add('fa-check');  
         todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
-        todo_button.setAttribute('onMouseover', 'Click to mark as done');
+        todo_button.setAttribute('onMouseover', 'Click to mark as done.');
         todo_cell.innerHTML = todo;        
         todo_trash.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
         todo_trashButton.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
