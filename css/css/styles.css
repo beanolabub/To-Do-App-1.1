@@ -1,0 +1,35 @@
+h1 {text-align:center;}
+p {text-align:center; }
+.first, footer{
+background: none rgb(224, 187, 228);
+    color: rgb(0, 0, 0);
+}
+footer{
+    margin-bottom: 2rem;
+    padding: 1rem;
+}
+.toDoList{
+    background: none rgb(149, 125, 173);
+    color: rgb(0, 0, 0);
+}
+.completedList{
+    background: none rgb(210, 145, 188);
+    color: rgb(0, 0, 0);
+}
+i{
+    font-size:large;
+}
+.fa-check{
+    margin-left: 2rem;
+}
+.fa{
+    font-weight:bold;
+    cursor: pointer;
+}
+.container{
+    width:500px;
+    margin: 1rem auto auto auto;
+}
+li{
+    list-style:none;
+}
