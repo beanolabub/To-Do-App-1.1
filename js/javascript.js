@@ -9,7 +9,7 @@ function get_todos() {
     request.send();
     request.onload = function() {
         var todos = request.response;       
-        
+        console.log(todos);
         printTodos(todos);
     }
 }
@@ -126,9 +126,9 @@ function formatDates(date){
     
     var date = new Date(date);
     const fullYear = date.getFullYear();
-    console.log(fullYear);
+    // console.log(fullYear);
     var year = fullYear.toString().substr(-2);
-    console.log(year);
+    // console.log(year);
     d=date.getDate()+
           "/"+date.getMonth()+
           "/"+year;
