@@ -35,26 +35,31 @@ function printTodos(todos) {
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         var row = document.createElement('tr');
         var todo_cell = document.createElement('td');
+        var todo_cell1 = document.createElement('td');
         var todo_cell2 = document.createElement('td');
         var todo_cell3 = document.createElement('td');
         var todo_trash = document.createElement('i');
-        var todo_button = document.createElement('i');
+        // var todo_button = document.createElement('i');
         var todo_trashButton = document.createElement('button');
         todo_trash.classList.add('fa');   
         todo_trash.classList.add('fa-trash');  
-        todo_button.classList.add('fa');   
-        todo_button.classList.add('fa-check');  
-        todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
-        todo_button.setAttribute('onMouseover', 'Click to mark as done.');
+        // todo_button.classList.add('fa');   
+        // todo_button.classList.add('fa-check');  
+        // todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
+        // todo_button.setAttribute('onMouseover', 'Click to mark as done.');
+        // incomplete icon
+        const todo_button = '<i class="fa fa-check" onclick="completeTodo(' + todo_id +')"></i>';
+
         todo_cell.innerHTML = todo;        
         todo_trash.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
         todo_trashButton.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
         todo_trashButton.setAttribute('onMouseover', 'Delete task');
-        todo_cell.append(todo_button);
+        todo_cell1.innerHTML = (todo_button);
         todo_cell2.innerHTML = todo_createdDate;  
         todo_cell3.append(todo_trash);
         row.append(todo_cell);
         row.append(todo_cell2);
+        row.append(todo_cell1);
         row.append(todo_cell3);
         table.append(row);
 
@@ -75,24 +80,22 @@ function printCompleted(todos) {
         var completed_cell2 = document.createElement('td');
         var completed_cell3 = document.createElement('td');
         var completed_cell4 = document.createElement('td');
+        var completed_cell5 = document.createElement('td');
         // incomplete icon
-        var incomplete = document.createElement('i');
-        incomplete.classList.add('fa');
-        incomplete.classList.add('fa-circle-xmark');
-        incomplete.setAttribute('onclick', 'incompleteTodo(' + todo_id +')');
-        incomplete.setAttribute('onMouseover', 'Mark task incomplete');
-        const incomplete2 = '<i class="fa fa-check-circle-o"></i>';
+        const incomplete = '<i class="fa fa-undo" onclick="incompleteTodo(' + todo_id +')"></i>';
+        const archive = '<i class="fa fa-archive"></i>';
         // innerHTML
         completed_cell1.innerHTML = todo;
         completed_cell2.innerHTML = todo_completedDate;        
         completed_cell3.innerHTML = todo_createdDate;  
-        completed_cell4.innerHTML = incomplete2;
+        completed_cell4.innerHTML = incomplete;
+        completed_cell5.innerHTML = archive;
         // append
         row.append(completed_cell1);
         row.append(completed_cell3);
         row.append(completed_cell2);
         row.append(completed_cell4);
-        row.append(incomplete);
+        row.append(completed_cell5);
         table.append(row);
 
     }

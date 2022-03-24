@@ -45,3 +45,6 @@ th a{
 th .fa{
     float: right;
 }
+.th-sm{
+    width: 10px;
+}
