@@ -30,33 +30,26 @@ function get_complete() {
 function printTodos(todos) {
     let table = document.getElementById('todo_table');
     for (var i in todos ) {
+        // data
         const todo_id = todos[i].todo_id;
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
+        // create elements\
         var row = document.createElement('tr');
         var todo_cell = document.createElement('td');
         var todo_cell1 = document.createElement('td');
         var todo_cell2 = document.createElement('td');
         var todo_cell3 = document.createElement('td');
-        var todo_trash = document.createElement('i');
-        // var todo_button = document.createElement('i');
         var todo_trashButton = document.createElement('button');
-        todo_trash.classList.add('fa');   
-        todo_trash.classList.add('fa-trash');  
-        // todo_button.classList.add('fa');   
-        // todo_button.classList.add('fa-check');  
-        // todo_button.setAttribute('onclick', 'completeTodo(' + todo_id +')');
-        // todo_button.setAttribute('onMouseover', 'Click to mark as done.');
-        // incomplete icon
+        // delete icon
+        const todo_trash = '<i class="fa fa-trash" onclick="deleteTodo(' + todo_id +')"></i>';
         const todo_button = '<i class="fa fa-check" onclick="completeTodo(' + todo_id +')"></i>';
-
+        // innerHTML
         todo_cell.innerHTML = todo;        
-        todo_trash.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
-        todo_trashButton.setAttribute('onclick', 'deleteTodo(' + todo_id +')');
-        todo_trashButton.setAttribute('onMouseover', 'Delete task');
-        todo_cell1.innerHTML = (todo_button);
-        todo_cell2.innerHTML = todo_createdDate;  
-        todo_cell3.append(todo_trash);
+        todo_cell1.innerHTML = todo_button;
+        todo_cell2.innerHTML = todo_createdDate; 
+        todo_cell3.innerHTML = todo_trash; 
+        // append
         row.append(todo_cell);
         row.append(todo_cell2);
         row.append(todo_cell1);
@@ -75,7 +68,7 @@ function printCompleted(todos) {
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
         var row = document.createElement('tr');
-        // tds
+        // create elements
         var completed_cell1 = document.createElement('td');
         var completed_cell2 = document.createElement('td');
         var completed_cell3 = document.createElement('td');

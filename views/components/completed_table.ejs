@@ -1,32 +1,33 @@
 <h2>Completed</h2>
-<table class="table table-striped completedList">
-    <thead>
-        <tr>
-            <th>
-                <a href="?o=3">
-                    <i class="fa fa-sort-alpha-asc"></i>
-                    Name
-                </a>
-            </th>
-            <th class="th-date">
-                <a href="?o=4">
-                    <i class="fa fa-sort-alpha-asc"></i>
-                    Added
-                </a>
-            </th>
-            <th class="th-date">
-                <a href="?o=5">
-                    <i class="fa fa-sort-alpha-asc"></i>
-                    Completed
-                </a>
-            </th>
-            <th class="th-sm">&nbsp;</th>
-            <th class="th-sm">&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody id="completed_table">
-
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-striped completedList table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <a href="?o=3">
+                        <i class="fa fa-sort-alpha-asc"></i>
+                        Name
+                    </a>
+                </th>
+                <th class="th-date">
+                    <a href="?o=4">
+                        <i class="fa fa-sort-alpha-asc"></i>
+                        Added
+                    </a>
+                </th>
+                <th class="th-date">
+                    <a href="?o=5">
+                        <i class="fa fa-sort-alpha-asc"></i>
+                        Completed
+                    </a>
+                </th>
+                <th class="th-sm">&nbsp;</th>
+                <th class="th-sm">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody id="completed_table">
+        </tbody>
+    </table>
+</div>
 
 <form id="incomplete_todo_form" action="/incomplete_todo/" method="post"></form>
