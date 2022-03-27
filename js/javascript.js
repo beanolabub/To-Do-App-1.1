@@ -104,20 +104,10 @@ function incompleteTodo(todo_id) {
 
 function formatDates(date){
     var formattedDate = date.replace(/T/, ' ').replace(/\..+/, '');
-    //alert(formattedDate);
-
-    
     var date = new Date(date);
     const fullYear = date.getFullYear();
-    // console.log(fullYear);
     var year = fullYear.toString().substr(-2);
-    // console.log(year);
-    d=date.getDate()+
-          "/"+date.getMonth()+
-          "/"+year;
-
-
+    d = date.getDate() + "/" +date.getMonth() + "/"+year;
     return date = d;
-    
 }
 

@@ -8,7 +8,10 @@ h1,p {
     text-align:center;
 }
 h2{
-    padding: 0.5rem 0 0 0.5rem;
+    padding: 0.5rem 0 0 1.2rem;
+    margin: 1rem auto 0 2rem;
+    border-radius: 2rem 2rem 0 0 !important;
+    width: 30%;
 }
 header{
     background: #DB82D0;
@@ -24,6 +27,7 @@ footer{
 footer, .toDoList, .completedList{
     background: #e9b2e9;
     opacity: 0.9;
+    border-radius: 2rem;
 }
 i{
     font-size:large;
@@ -44,10 +48,14 @@ li{
 }
 th a{
     text-decoration:none;
+    cursor: pointer;
     color:rgb(0, 0, 0);
 }
 th .fa{
     float: right;
+}
+th{
+    border: none !important;
 }
 .th-sm{
     width: 10px;
