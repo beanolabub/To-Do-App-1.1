@@ -1,28 +1,32 @@
+body{
+    background-image:url('/images/logo.png');
+    background-repeat:no-repeat;
+    background-size:auto 100%;
+    background-position:center;
+}
 h1,p {
     text-align:center;
 }
 h2{
     padding: 0.5rem 0 0 0.5rem;
 }
+header{
+    background: #DB82D0;
+    opacity: 0.9;
+    border-radius: 7rem 7rem 0 0;
+}
 header, footer{
-    background: none rgb(149, 125, 174);
-    color: rgb(0, 0, 0);
     padding: 1rem;
-    border-radius: 1rem 1rem 0 0;
 }
 footer{
-    border-radius: 0 0 1rem 1rem
+    border-radius: 0 0 1rem 1rem;
+}
+footer, .toDoList, .completedList{
+    background: #e9b2e9;
+    opacity: 0.9;
 }
 i{
     font-size:large;
-}
-.toDoList{
-    background: none rgb(188, 132, 188);
-    color: rgb(0, 0, 0);
-}
-.completedList{
-    background: none rgb(230, 139, 202);
-    color: rgb(0, 0, 0);
 }
 .fa-check{
     margin-left: 2rem;

@@ -1,0 +1,63 @@
+
+
+<script>
+
+function func() {
+return ( ( ( 1+Math.random() ) * 0x10000 ) | 0 ).toString( 16 ).substring( 1 );
+}
+// For calling it, stitch '3' in the 3rd group
+UUID = (func() + func() + "-" + func() + "-" + func() + "-" + func() + "-" + func() + func() + func()).toLowerCase();
+alert(UUID);
+
+
+array = [
+  {todo_id: 12, TODO: 'scratch balls'},
+  {todo_id: 27, TODO: 'fart'},
+  {todo_id: 22, TODO: 'take a fart, what is it '},
+];
+array.sort((a,b) => (a.todo_id > b.todo_id) ? 1 : ((b.todo_id > a.todo_id) ? -1 : 0));
+console.log('BEFORE:');
+console.log(array);
+
+array = [
+  [1, 12, "2022-06-05", 'scratch balls'],
+  [3, 22, "2022-06-06", 'take a fart, what is it '],
+  [2, 15, "2022-06-04", 'fart'],
+];
+
+console.log('untouched:');
+console.log(array);
+array.sort((a,b) => a[1] - b[1]);
+console.log('index 1:');
+console.log(array);
+array.sort((a,b) => a[2] - b[2]);
+console.log('index 2:');
+console.log(array);
+array.sort((a,b) => a[3] - b[3]);
+console.log('index 3:');
+console.log(array);
+
+var arr = [
+   [20, 'Peter', 3],
+  [10, 'Mary', 2],
+  [30, 'David', 5],
+[50, 'John', 4],
+[40, 'Billy', 1]
+];
+
+arr.sort((b,a) => a[0] - b[0]);
+console.log(arr);
+
+var array = [
+    ["key1", 10],
+    ["key2", 3],
+    ["key3", 40],
+    ["key4", 20]
+  ];
+
+
+array.sort((a,b) => a[1] - b[1]);
+
+console.log(array);
+
+</script>
