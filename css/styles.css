@@ -23,6 +23,8 @@ header, footer{
 }
 footer{
     border-radius: 0 0 1rem 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 footer, .toDoList, .completedList{
     background: #e9b2e9;
