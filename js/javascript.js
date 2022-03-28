@@ -44,8 +44,8 @@ function printTodos(todos) {
         <tr>
             <td>${todo}</td>
             <td>${todo_createdDate}</td>
-            <td><i class="fa fa-trash" title="Delete" onclick="deleteTodo(${todo_id})"></i></td>
-            <td><i class="fa fa-check" title="Complete" onclick="completeTodo(${todo_id})"></i></td>
+            <td><i class="fa fa-trash" title="Delete" onclick="modalAction(${todo_id},'/delete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
+            <td><i class="fa fa-check" title="Complete" onclick="modalAction(${todo_id},'/complete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
         </tr>`;
         table.innerHTML = (row);
 
@@ -67,35 +67,16 @@ function printCompleted(todos) {
             <td>${todo}</td>
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
-            <td><i class="fa fa-archive" title="Archive" onclick="archiveTodo(${todo_id})"></i></td>
-            <td><i class="fa fa-undo" title="Incomplete" onclick="incompleteTodo(${todo_id})"></i></td>
+            <td><i class="fa fa-archive" title="Archive" onclick="modalAction(${todo_id},'/archive_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
+            <td><i class="fa fa-undo" title="Incomplete" onclick="modalAction(${todo_id},'/incomplete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
         </tr>`;
         table.innerHTML = (row);
     }
 }
 
-function completeTodo(todo_id) {
-    var form = document.getElementById("complete_todo_form");
-    form.action = form.action + todo_id;
-    form.submit();
-}
-
-function deleteTodo(todo_id) {
-    var form = document.getElementById("delete_todo_form");
-    form.action = form.action + todo_id;
-    form.submit();
-}
-
-function incompleteTodo(todo_id) {
-    var form = document.getElementById("incomplete_todo_form");
-    form.action = form.action + todo_id;
-    form.submit();
-}
-
-function archiveTodo(todo_id) {
-    var form = document.getElementById("archive_todo_form");
-    form.action = form.action + todo_id;
-    form.submit();
+function modalAction(todo_id,action) {
+    var form = document.getElementById("modal-inner-form");
+    form.action = action + todo_id;
 }
 
 function formatDates(date){
@@ -106,4 +87,3 @@ function formatDates(date){
     d = date.getDate() + "/" +date.getMonth() + "/"+year;
     return date = d;
 }
-

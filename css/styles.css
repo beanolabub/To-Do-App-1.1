@@ -67,3 +67,11 @@ th .fa{
 .th-date{
     width: 100px;
 }
+@keyframes enlarge {
+  from {height:1rem;}
+  to {height:10rem;}
+}
+#add-todo-text:focus{
+    animation: enlarge 1s;
+    animation-fill-mode: forwards;  
+}
