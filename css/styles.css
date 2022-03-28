@@ -1,5 +1,6 @@
+/* tags */
 body{
-    background-image:url('/images/logo.png');
+    background-image:url('/images/logo.png'), url('/images/bg.jpg');
     background-repeat:no-repeat;
     background-size:auto 100%;
     background-position:center;
@@ -34,6 +35,13 @@ footer, .toDoList, .completedList{
 i{
     font-size:large;
 }
+li{
+    list-style:none;
+}
+th{
+    border: none !important;
+}
+/* classes */
 .fa-check{
     margin-left: 2rem;
 }
@@ -45,9 +53,6 @@ i{
     max-width:600px;
     margin: 1rem auto auto auto;
 }
-li{
-    list-style:none;
-}
 th a{
     text-decoration:none;
     cursor: pointer;
@@ -55,9 +60,6 @@ th a{
 }
 th .fa{
     float: right;
-}
-th{
-    border: none !important;
 }
 .th-sm{
     width: 10px;

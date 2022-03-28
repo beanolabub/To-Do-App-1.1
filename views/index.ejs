@@ -1,6 +1,15 @@
-    <header>
-        <h1>Listy Larry</h1>
-        <%- include ('components/add_todo') %>
-    </header> 
-        <%- include ('components/todo_table') %>
-        <%- include ('components/completed_table') %>
+<body>
+    <div class="container">
+        <header>
+            <h1>Listy Larry</h1>
+<%- include ('components/add_todo') %>
+        </header> 
+        <main>
+<%- include ('components/todo_table') %>
+<%- include ('components/completed_table') %>
+        </main>
+        <footer>
+<%- include ('footer') %>
+        </footer>
+    </div>
+</body>

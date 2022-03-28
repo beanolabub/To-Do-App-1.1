@@ -1,33 +1,33 @@
-<h2 class="completedList">Completed</h2>
-<div class="table-responsive">
-    <table class="table table-striped completedList table-hover">
-        <thead>
-            <tr>
-                <th>
-                    <a onclick="get_complete(3)">
-                        <i class="fa fa-sort-alpha-asc"></i>
-                        Name
-                    </a>
-                </th>
-                <th class="th-date">
-                    <a onclick="get_complete(4)">
-                        <i class="fa fa-sort-alpha-asc"></i>
-                        Added
-                    </a>
-                </th>
-                <th class="th-date">
-                    <a onclick="get_complete(5)">
-                        <i class="fa fa-sort-alpha-asc"></i>
-                        Completed
-                    </a>
-                </th>
-                <th class="th-sm">&nbsp;</th>
-                <th class="th-sm">&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody id="completed_table">
-        </tbody>
-    </table>
-</div>
-
-<form id="incomplete_todo_form" action="/incomplete_todo/" method="post"></form>
+            <h2 class="completedList">Done</h2>
+            <div class="table-responsive">
+                <table class="table table-striped completedList table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a onclick="get_complete(3)">
+                                    <i class="fa fa-sort-alpha-asc"></i>
+                                    Name
+                                </a>
+                            </th>
+                            <th class="th-date">
+                                <a onclick="get_complete(4)">
+                                    <i class="fa fa-sort-alpha-asc"></i>
+                                    Added
+                                </a>
+                            </th>
+                            <th class="th-date">
+                                <a onclick="get_complete(5)">
+                                    <i class="fa fa-sort-alpha-asc"></i>
+                                    Done
+                                </a>
+                            </th>
+                            <th class="th-sm">&nbsp;</th>
+                            <th class="th-sm">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody id="completed_table">
+                    </tbody>
+                </table>
+            </div>
+            <form id="incomplete_todo_form" action="/incomplete_todo/" method="post"></form>
+            <form id="archive_todo_form" action="/archive_todo/" method="post"></form>

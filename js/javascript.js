@@ -44,8 +44,8 @@ function printTodos(todos) {
         <tr>
             <td>${todo}</td>
             <td>${todo_createdDate}</td>
-            <td><i class="fa fa-trash" onclick="deleteTodo(${todo_id})"></i></td>
-            <td><i class="fa fa-check" onclick="completeTodo(${todo_id})"></i></td>
+            <td><i class="fa fa-trash" title="Delete" onclick="deleteTodo(${todo_id})"></i></td>
+            <td><i class="fa fa-check" title="Complete" onclick="completeTodo(${todo_id})"></i></td>
         </tr>`;
         table.innerHTML = (row);
 
@@ -67,35 +67,10 @@ function printCompleted(todos) {
             <td>${todo}</td>
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
-            <td><i class="fa fa-trash" onclick="deleteTodo(${todo_id})"></i></td>
-            <td><i class="fa fa-check" onclick="completeTodo(${todo_id})"></i></td>
+            <td><i class="fa fa-archive" title="Archive" onclick="archiveTodo(${todo_id})"></i></td>
+            <td><i class="fa fa-undo" title="Incomplete" onclick="incompleteTodo(${todo_id})"></i></td>
         </tr>`;
         table.innerHTML = (row);
-
-        // var row = document.createElement('tr');
-        // // create elements
-        // var completed_cell1 = document.createElement('td');
-        // var completed_cell2 = document.createElement('td');
-        // var completed_cell3 = document.createElement('td');
-        // var completed_cell4 = document.createElement('td');
-        // var completed_cell5 = document.createElement('td');
-        // // incomplete icon
-        // const incomplete = '<i class="fa fa-undo" onclick="incompleteTodo(' + todo_id +')"></i>';
-        // const archive = '<i class="fa fa-archive"></i>';
-        // // innerHTML
-        // completed_cell1.innerHTML = todo;
-        // completed_cell2.innerHTML = todo_completedDate;        
-        // completed_cell3.innerHTML = todo_createdDate;  
-        // completed_cell4.innerHTML = incomplete;
-        // completed_cell5.innerHTML = archive;
-        // // append
-        // row.append(completed_cell1);
-        // row.append(completed_cell3);
-        // row.append(completed_cell2);
-        // row.append(completed_cell4);
-        // row.append(completed_cell5);
-        // table.append(row);
-
     }
 }
 
@@ -107,13 +82,18 @@ function completeTodo(todo_id) {
 
 function deleteTodo(todo_id) {
     var form = document.getElementById("delete_todo_form");
-   
     form.action = form.action + todo_id;
     form.submit();
 }
 
 function incompleteTodo(todo_id) {
     var form = document.getElementById("incomplete_todo_form");
+    form.action = form.action + todo_id;
+    form.submit();
+}
+
+function archiveTodo(todo_id) {
+    var form = document.getElementById("archive_todo_form");
     form.action = form.action + todo_id;
     form.submit();
 }

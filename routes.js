@@ -88,4 +88,16 @@ router.post('/incomplete_todo/:id', (req, res) =>{
     })
 });
 
+router.post('/archive_todo/:id', (req, res) =>{
+    const todo_id = req.params.id;
+    const queryString = "UPDATE todos SET COMPLETE = '2', DATE_COMPLETE = NULL WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /archive_todo: " + todo_id + " " + err);
+        }
+        console.log("@ /archive_todo : with id " + todo_id + " marked incomplete");
+        res.redirect('/');
+    })
+});
+
 module.exports = router;
