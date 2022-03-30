@@ -1,6 +1,6 @@
 /* tags */
 body{
-    background-image:url('/images/logo.png'), url('/images/bg.jpg');
+    background-image:url('/images/bg.jpg');
     background-repeat:no-repeat;
     background-size:auto 100%;
     background-position:center;
@@ -94,20 +94,20 @@ th .fa{
     border: 1px solid #333;
 }
 .pc0{
-    background-color: #fff !important;
+    background-color: #e9b2e9!important;
 }
 .pc1{
-    background-color: #DB82D0 !important;
+    background-color: #CCE8DB !important;
 }
 .pc2{
-    background-color: #FFCD8C !important;
+    background-color: #C1D4E3 !important;
 }
 .pc3{
-    background-color: #b48cff !important;
+    background-color: #BEB4D6 !important;
 }
 .pc4{
-    background-color: #8cffc0 !important;
+    background-color: #FADAE2 !important;
 }
 .pc5{
-    background-color: #fff38c !important;
+    background-color: #CC97C1 !important;
 }
