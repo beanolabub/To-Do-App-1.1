@@ -100,4 +100,17 @@ router.post('/archive_todo/:id', (req, res) =>{
     })
 });
 
+router.post('/palette/:todo/:id', (req, res) =>{
+    const todo_id = req.params.todo;
+    const colour = req.params.id;
+    const queryString = "UPDATE todos SET colour = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [colour, todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /palette: " + todo_id + " " + colour + " " + err);
+        }
+        console.log("@ /palette : with id " + todo_id + " and colour " + colour + " updated");
+        res.redirect('/');
+    })
+});
+
 module.exports = router;

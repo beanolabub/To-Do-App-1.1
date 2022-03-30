@@ -7,17 +7,19 @@ body{
 }
 h1,p {
     text-align:center;
+    font-size:1.5rem;
 }
 h2{
     padding: 0.5rem 0 0 1.2rem;
     margin: 1rem auto 0 2rem;
     border-radius: 2rem 2rem 0 0 !important;
     width: 12rem;
+    font-size: 1.3rem;
 }
 header{
     background: #DB82D0;
     opacity: 0.9;
-    border-radius: 7rem 7rem 0 0;
+    border-radius: 7rem 7rem 1rem 1rem;
 }
 header, footer{
     padding: 1rem;
@@ -74,4 +76,38 @@ th .fa{
 #add-todo-text:focus{
     animation: enlarge 1s;
     animation-fill-mode: forwards;  
+}
+.palette{
+    background-image: url('/images/palette.svg');
+    height: 1rem;
+    width: 1rem;
+}
+.palette-wrapper{
+    display:flex;
+}
+.palette-choice{
+    height: 2rem;
+    width: 2rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    border: 1px solid #333;
+}
+.pc0{
+    background-color: #fff !important;
+}
+.pc1{
+    background-color: #DB82D0 !important;
+}
+.pc2{
+    background-color: #FFCD8C !important;
+}
+.pc3{
+    background-color: #b48cff !important;
+}
+.pc4{
+    background-color: #8cffc0 !important;
+}
+.pc5{
+    background-color: #fff38c !important;
 }

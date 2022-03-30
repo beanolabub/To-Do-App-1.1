@@ -39,11 +39,13 @@ function printTodos(todos) {
         const todo_id = todos[i].todo_id;
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
+        const colour = todos[i].colour;
         // create row
         row += `
-        <tr>
+        <tr class="pc${colour}">
             <td>${todo}</td>
             <td>${todo_createdDate}</td>
+            <td><img src="/images/palette.svg" class="fa palette" title="Choose colour" onclick="showPalette(${todo_id})" data-toggle="modal" data-target="#palette-modal" /></td>
             <td><i class="fa fa-trash" title="Delete" onclick="modalAction(${todo_id},'/delete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
             <td><i class="fa fa-check" title="Complete" onclick="modalAction(${todo_id},'/complete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
         </tr>`;
@@ -77,6 +79,17 @@ function printCompleted(todos) {
 function modalAction(todo_id,action) {
     var form = document.getElementById("modal-inner-form");
     form.action = action + todo_id;
+}
+
+function selectPalette(id) {
+    var form = document.getElementById("palette-inner-form");
+    var todo = document.getElementById("todo-id");
+    todo_id = todo.value;
+    form.action = '/palette/' + todo_id  + "/" + id;
+}
+function showPalette(todo_id) {
+    var todo = document.getElementById("todo-id");
+    todo.value = todo_id;
 }
 
 function formatDates(date){

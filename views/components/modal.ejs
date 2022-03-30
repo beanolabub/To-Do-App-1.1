@@ -1,19 +1,47 @@
 <div class="modal" id="form-modal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Sure?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            Just checking you mean't to do that
-        </div>
-        <div class="modal-footer">
-            <form id="modal-inner-form" action="/action/" method="post">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Go -></button>
-            </form>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sure?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Just checking you mean't to do that
+      </div>
+      <div class="modal-footer">
+          <form id="modal-inner-form" action="/action/" method="post">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Go -></button>
+          </form>
       </div>
     </div>
   </div>
+</div>
+<div class="modal" id="palette-modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sure?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Pick a colour, any colour...
+          <div class="palette-wrapper">
+            <div onclick="selectPalette(1)" class="palette-choice pc1 fa"></div>
+            <div onclick="selectPalette(2)" class="palette-choice pc2 fa"></div>
+            <div onclick="selectPalette(3)" class="palette-choice pc3 fa"></div>
+            <div onclick="selectPalette(4)" class="palette-choice pc4 fa"></div>
+            <div onclick="selectPalette(5)" class="palette-choice pc5 fa"></div>
+            <div onclick="selectPalette(0)" class="palette-choice pc0 fa"></div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <form id="palette-inner-form" action="/palette/" method="post">
+              <input type="hidden" id="todo-id" value="">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Chose</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
