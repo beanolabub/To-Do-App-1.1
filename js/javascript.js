@@ -84,6 +84,9 @@ function modalAction(todo_id,action) {
 function selectPalette(id) {
     var form = document.getElementById("palette-inner-form");
     var todo = document.getElementById("todo-id");
+    var palette = document.getElementById("palette-submit");
+    palette.disabled = false;
+    palette.style.cursor = "pointer";
     todo_id = todo.value;
     form.action = '/palette/' + todo_id  + "/" + id;
 }

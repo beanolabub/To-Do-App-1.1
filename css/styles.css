@@ -93,7 +93,12 @@ th .fa{
     background-color: #fff;
     border: 1px solid #333;
 }
-
+#palette-submit{
+    cursor: not-allowed;
+}
+.palette-choice:focus .btn-primary{
+    enabled: true;
+}
 .pc0{
     background-color: #e9b2e9!important;
 }
