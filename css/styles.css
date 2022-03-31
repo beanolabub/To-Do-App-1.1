@@ -117,3 +117,11 @@ th .fa{
 .pc5{
     background-color: #CC97C1 !important;
 }
+.todo-td{
+    height:2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.todo-input{
+    display:none;
+}

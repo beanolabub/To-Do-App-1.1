@@ -43,9 +43,13 @@ function printTodos(todos) {
         // create row
         row += `
         <tr class="pc${colour}">
-            <td>${todo}</td>
+            <td class="todo-td">
+                <div class="todo-td" title="${todo}">${todo}</div>
+                <input type="text" class="todo-input" id="todo-${todo_id}" value="${todo} [${todo_createdDate}]">
+            </td>
             <td>${todo_createdDate}</td>
             <td><img src="/images/palette.svg" class="fa palette" title="Choose colour" onclick="showPalette(${todo_id})" data-toggle="modal" data-target="#palette-modal" /></td>
+            <td><i class="fa fa-clone" title="Copy todo" onclick="copyText(${todo_id})"></i></td>
             <td><i class="fa fa-trash" title="Delete" onclick="modalAction(${todo_id},'/delete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
             <td><i class="fa fa-check" title="Complete" onclick="modalAction(${todo_id},'/complete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
         </tr>`;
@@ -66,7 +70,9 @@ function printCompleted(todos) {
         // create row
         row += `
         <tr>
-            <td>${todo}</td>
+            <td class="todo-td">
+                <div class="todo-td">${todo}</div>
+            </td>
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
             <td><i class="fa fa-archive" title="Archive" onclick="modalAction(${todo_id},'/archive_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
@@ -87,8 +93,7 @@ function selectPalette(id) {
     var palette = document.getElementById("palette-submit");
     palette.disabled = false;
     palette.style.cursor = "pointer";
-    todo_id = todo.value;
-    form.action = '/palette/' + todo_id  + "/" + id;
+    form.action = '/palette/' + todo.value  + "/" + id;
 }
 function showPalette(todo_id) {
     var todo = document.getElementById("todo-id");
@@ -103,3 +108,11 @@ function formatDates(date){
     d = date.getDate() + "/" +date.getMonth() + "/"+year;
     return date = d;
 }
+function copyText( todo_id ) {
+    var copyText = document.getElementById("todo-" + todo_id);
+    console.log(copyText);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    navigator.clipboard.writeText(copyText.value);
+    alert("Copied");
+  }
