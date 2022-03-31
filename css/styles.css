@@ -87,20 +87,19 @@ th .fa{
 }
 .palette-wrapper{
     display:flex;
+    width: 100%;
 }
 .palette-choice{
     height: 2rem;
     width: 2rem;
-    margin: 0.5rem;
+    margin: 2rem auto;
     border-radius: 1rem;
     background-color: #fff;
     border: 1px solid #333;
+    box-shadow: #333 0 5px 15px;
 }
 #palette-submit{
     cursor: not-allowed;
-}
-.palette-choice:focus .btn-primary{
-    enabled: true;
 }
 .pc0{
     background-color: #e9b2e9!important;
@@ -127,4 +126,12 @@ th .fa{
 }
 .todo-input{
     display:none;
+}
+.modal-content{
+    background: #DB82D0;
+    border-radius: 3rem 3rem 1rem 1rem;
+    box-shadow: #333 0 5px 15px;
+}
+.modal-body, .modal-footer{
+    background: #e9b2e9;
 }
