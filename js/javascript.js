@@ -31,7 +31,7 @@ function get_complete(order) {
      }
  }
 
-function printTodos(todos) {
+ function printTodos(todos) {
     let table = document.getElementById('todo_table');
     let row = '';
     for (var i in todos ) {
@@ -116,3 +116,37 @@ function copyText( todo_id ) {
     navigator.clipboard.writeText(copyText.value);
     alert("Copied");
   }
+
+function csv() {
+    var request = new XMLHttpRequest();
+    var requestURL = '/csv';
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        var csv = request.response;       
+        printCsv(csv);
+
+    }
+}
+
+function printCsv(todos) {
+    let csv = '';
+    for (var i in todos ) {
+        // data
+        const todo_id = todos[i].todo_id;
+        const todo = todos[i].TODO;
+        const todo_createdDate = formatDates(todos[i].DATE_CREATED);
+        
+        var csvFileData = `[  
+            ['${todo_id}','${todo}', '${todo_createdDate}'];
+        ]`;
+        return csvFileData;
+    }
+}
+const addButt = document.getElementById('add-todo-btn');
+const addForm = document.getElementById('add-todo-form');
+addButt.addEventListener('click', function() {
+    console.log('clicked');
+    addForm.submit();
+});

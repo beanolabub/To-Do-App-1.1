@@ -113,4 +113,27 @@ router.post('/palette/:todo/:id', (req, res) =>{
     })
 });
 
+router.get('/csv', (req, res) =>{
+    const queryString = "SELECT todo, DATE_CREATED, DATE_COMPLETE FROM todos WHERE complete < 2"
+    conn.query(queryString, (err, rows, fields) =>{
+        if (err) {
+            console.log("failed to query @ /csv: " + err);
+        }
+        console.log("Getting data from database at @ /csv");
+        res.json(rows);
+    })
+});
+
+router.post('/progress/:id', (req, res) =>{
+    const todo_id = req.params.id;
+    const queryString = "UPDATE todos SET progress = '1' WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /progress: " + todo_id + " " + err);
+        }
+        console.log("@ /archive_todo : with id " + todo_id + " marked progressed");
+        res.redirect('/');
+    })
+});
+
 module.exports = router;
