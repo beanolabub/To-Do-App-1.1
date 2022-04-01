@@ -41,7 +41,7 @@ function get_complete(order) {
         let progress = todos[i].progress;
         let progressVal = 1;
         let progressTxt = '';
-        if( progress === 1 ) { progressTxt = 'check-'; progressVal = 0 };
+        if( progress === 1 ) { progressTxt = 'check-'; progressVal = 1 };
         // create row
         row += `
         <tr class="pc${colour}">
@@ -54,7 +54,7 @@ function get_complete(order) {
             <td><img src="/images/palette.svg" class="fa palette" title="Choose colour" onclick="showPalette(${todo_id})" data-toggle="modal" data-target="#palette-modal" /></td>
             <td><i class="fa fa-clone" title="Copy todo" onclick="copyText(${todo_id})"></i></td>
             <td><i class="fa fa-trash" title="Delete" onclick="modalAction(${todo_id},'/delete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
-            <td><i class="fa fa-check" title="Complete" onclick="modalAction(${todo_id},'/complete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
+            <td><i class="fa fa-check" title="Complete" onclick="update(${todo_id},'complete',${progressVal})"></i></td>
         </tr>`;
         table.innerHTML = (row);
 
@@ -70,6 +70,9 @@ function printCompleted(todos) {
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
+        let progress = todos[i].progress;
+        let progressVal = 0;
+        if( progress === 1 ) { progressVal = 0 };
         // create row
         row += `
         <tr>
@@ -79,7 +82,7 @@ function printCompleted(todos) {
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
             <td><i class="fa fa-archive" title="Archive" onclick="modalAction(${todo_id},'/archive_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
-            <td><i class="fa fa-undo" title="Incomplete" onclick="modalAction(${todo_id},'/incomplete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
+            <td><i class="fa fa-undo" title="Incomplete" onclick="update(${todo_id},'complete',${progressVal})"></i></td>
         </tr>`;
         table.innerHTML = (row);
     }
@@ -129,5 +132,6 @@ function update(todo_id,mode,value) {
      request.onload = function() {
         var todos = request.response;
         get_todos();
+        get_complete();
      }
  }

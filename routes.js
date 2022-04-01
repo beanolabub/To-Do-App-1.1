@@ -130,13 +130,18 @@ router.get('/update/:id/:mode/:value', (req, res) =>{
     const todo_id = req.params.id;
     const todo_mode = req.params.mode;
     const todo_value = req.params.value;
-    // const todo_mode = 'progress';
-    console.log('todo_value: '+todo_value);
-    let queryString = 'x';
+    console.log(todo_mode);
+    let queryString = '';
     if ( todo_mode == "progress"){
         queryString = "UPDATE todos SET progress = ? WHERE todo_id = ?"; //UPDATE STATEMENT
     }
-    console.log(queryString);
+    if ( todo_mode == "complete"){
+        queryString = "UPDATE todos SET COMPLETE = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+    }
+    // console.log(queryString);
+    // console.log(todo_id);
+    // console.log(todo_mode);
+    // console.log(todo_value);
     conn.query(queryString, [todo_value, todo_id, todo_mode], (err, rows, fields) => {
         if (err){
             console.log("failed to complete @ /" + todo_mode + "_update: " + todo_id + " " + err);
