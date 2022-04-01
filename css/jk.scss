@@ -1,0 +1,40 @@
+@import 'tags.scss';
+@import 'styles.css';
+@import 'modal.scss';
+
+/* $dark: #00a0e9; */
+
+/* classes */
+.fa{
+    font-weight:bold;
+    cursor: pointer;
+    .fa-check{
+        margin-left: 2rem;
+    }
+}
+.container{
+    max-width:600px;
+    margin: 1rem auto auto auto;
+}
+th a{
+    text-decoration:none;
+    cursor: pointer;
+    color:rgb(0, 0, 0);
+}
+th .fa{
+    float: right;
+}
+.th-sm{
+    width: 10px;
+}
+.th-date{
+    width: 100px;
+}
+@keyframes enlarge {
+  from {height:1rem;}
+  to {height:10rem;}
+}
+#add-todo-text:focus{
+    animation: enlarge 1s;
+    animation-fill-mode: forwards;  
+}

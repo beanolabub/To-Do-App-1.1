@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2022 at 10:55 AM
+-- Generation Time: Apr 01, 2022 at 06:03 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.14
 
@@ -34,7 +34,8 @@ CREATE TABLE `todos` (
   `DATE_COMPLETE` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `LIST` varchar(85) NOT NULL,
   `DATE_CREATED` datetime NOT NULL DEFAULT current_timestamp(),
-  `colour` varchar(6) NOT NULL DEFAULT '0'
+  `colour` varchar(6) NOT NULL DEFAULT '0',
+  `progress` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql');
+const { exit } = require('process');
 const router = express.Router();
 const conn = getConnection();
 const pass = "password"
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/get_todos', (req, res) =>{
-    const queryString = "SELECT * FROM todos WHERE complete = '0'"
+    const queryString = "SELECT * FROM todos WHERE complete = '0' ORDER BY DATE_CREATED DESC"
     conn.query(queryString, (err, rows, fields) =>{
         if (err) {
             console.log("failed to query @ /get_todo: " + err);
@@ -66,7 +67,7 @@ router.post('/delete_todo/:id', (req, res) =>{
 });
 
 router.get('/complete_todos', (req, res) =>{
-    const queryString = "SELECT * FROM todos WHERE complete = '1'"
+    const queryString = "SELECT * FROM todos WHERE complete = '1' ORDER BY DATE_CREATED DESC"
     conn.query(queryString, (err, rows, fields) =>{
         if (err) {
             console.log("failed to query @ /complete_todo: " + err);
@@ -113,17 +114,6 @@ router.post('/palette/:todo/:id', (req, res) =>{
     })
 });
 
-router.get('/csv', (req, res) =>{
-    const queryString = "SELECT todo, DATE_CREATED, DATE_COMPLETE FROM todos WHERE complete < 2"
-    conn.query(queryString, (err, rows, fields) =>{
-        if (err) {
-            console.log("failed to query @ /csv: " + err);
-        }
-        console.log("Getting data from database at @ /csv");
-        res.json(rows);
-    })
-});
-
 router.post('/progress/:id', (req, res) =>{
     const todo_id = req.params.id;
     const queryString = "UPDATE todos SET progress = '1' WHERE todo_id = ?"; //UPDATE STATEMENT
@@ -136,4 +126,24 @@ router.post('/progress/:id', (req, res) =>{
     })
 });
 
+router.get('/update/:id/:mode/:value', (req, res) =>{
+    const todo_id = req.params.id;
+    const todo_mode = req.params.mode;
+    const todo_value = req.params.value;
+    // const todo_mode = 'progress';
+    console.log('todo_value: '+todo_value);
+    let queryString = 'x';
+    if ( todo_mode == "progress"){
+        queryString = "UPDATE todos SET progress = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+    }
+    console.log(queryString);
+    conn.query(queryString, [todo_value, todo_id, todo_mode], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete @ /" + todo_mode + "_update: " + todo_id + " " + err);
+        }
+        console.log("@ /update_" + todo_mode + " : with id " + todo_id);
+        res.redirect('/');
+    })
+});
+   
 module.exports = router;

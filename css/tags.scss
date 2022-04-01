@@ -1,0 +1,48 @@
+/* tags */
+body{
+    background-image:url('/images/bg.jpg');
+    background-repeat:no-repeat;
+    background-size:auto 100%;
+    background-position:center;
+}
+h1,p {
+    text-align:center;
+    font-size:1.5rem;
+}
+h2{
+    padding: 0.5rem 0 0 1.2rem;
+    margin: 1rem auto 0 2rem;
+    border-radius: 2rem 2rem 0 0 !important;
+    width: 12rem;
+    font-size: 1.3rem;
+}
+header{
+    background: #DB82D0;
+    opacity: 0.9;
+    border-radius: 7rem 7rem 1rem 1rem;
+}
+header, footer{
+    padding: 1rem;
+}
+footer{
+    border-radius: 0 0 1rem 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+footer, .toDoList, .completedList{
+    background: #e9b2e9;
+    opacity: 0.9;
+    border-radius: 2rem;
+}
+header, footer, .toDoList, .completedList{
+    box-shadow: #333 0 5px 15px;
+}
+i{
+    font-size:large;
+}
+li{
+    list-style:none;
+}
+th{
+    border: none !important;
+}

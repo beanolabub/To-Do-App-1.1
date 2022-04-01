@@ -1,0 +1,73 @@
+.palette {
+  background-image: url("/images/palette.svg");
+  height: 1rem;
+  width: 1rem;
+}
+
+.palette-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.palette-choice {
+  height: 2rem;
+  width: 2rem;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  background-color: #fff;
+  border: 1px solid #333;
+  -webkit-box-shadow: #333 0 5px 15px;
+          box-shadow: #333 0 5px 15px;
+}
+
+#palette-submit {
+  cursor: not-allowed;
+}
+
+.pc0 {
+  background-color: #e9b2e9 !important;
+}
+
+.pc1 {
+  background-color: #CCE8DB !important;
+}
+
+.pc2 {
+  background-color: #C1D4E3 !important;
+}
+
+.pc3 {
+  background-color: #BEB4D6 !important;
+}
+
+.pc4 {
+  background-color: #FADAE2 !important;
+}
+
+.pc5 {
+  background-color: #CC97C1 !important;
+}
+
+.todo-td {
+  height: 2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.todo-input {
+  display: none;
+}
+
+.modal-content {
+  background: #DB82D0;
+  border-radius: 3rem 3rem 1rem 1rem;
+  -webkit-box-shadow: #333 0 5px 15px;
+          box-shadow: #333 0 5px 15px;
+}
+
+.modal-body, .modal-footer {
+  background: #e9b2e9;
+}
+/*# sourceMappingURL=modal.css.map */

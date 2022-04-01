@@ -23,11 +23,9 @@ function get_complete(order) {
      request.onload = function() {
          var complete_todos = request.response;       
          if (order === 3) complete_todos.sort((a,b) => (a.TODO > b.TODO) ? 1 : ((b.TODO > a.TODO) ? -1 : 0));
-         if (order === 4) complete_todos.sort((a,b) => (a.DATE_CREATED > b.DATE_CREATED) ? 1 : ((b.DATE_CREATED > a.DATE_CREATED) ? -1 : 0));
-         if (order === 5) complete_todos.sort((a,b) => (a.DATE_COMPLETE > b.DATE_COMPLETE) ? 1 : ((b.DATE_COMPLETE > a.DATE_COMPLETE) ? -1 : 0));
+        if (order === 4) complete_todos.sort((b,a) => (a.DATE_CREATED > b.DATE_CREATED) ? 1 : ((b.DATE_CREATED > a.DATE_CREATED) ? -1 : 0));
+         if (order === 5) complete_todos.sort((b,a) => (a.DATE_COMPLETE > b.DATE_COMPLETE) ? 1 : ((b.DATE_COMPLETE > a.DATE_COMPLETE) ? -1 : 0));
          printCompleted(complete_todos);
-         console.log(complete_todos);
-
      }
  }
 
@@ -40,6 +38,10 @@ function get_complete(order) {
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         const colour = todos[i].colour;
+        let progress = todos[i].progress;
+        let progressVal = 1;
+        let progressTxt = '';
+        if( progress === 1 ) { progressTxt = 'check-'; progressVal = 0 };
         // create row
         row += `
         <tr class="pc${colour}">
@@ -48,6 +50,7 @@ function get_complete(order) {
                 <input type="text" class="todo-input" id="todo-${todo_id}" value="${todo} [${todo_createdDate}]">
             </td>
             <td>${todo_createdDate}</td>
+            <td><i class="fa fa-${progressTxt}circle-o" title="Underway?" onclick="update(${todo_id},'progress',${progressVal})"></i></td>
             <td><img src="/images/palette.svg" class="fa palette" title="Choose colour" onclick="showPalette(${todo_id})" data-toggle="modal" data-target="#palette-modal" /></td>
             <td><i class="fa fa-clone" title="Copy todo" onclick="copyText(${todo_id})"></i></td>
             <td><i class="fa fa-trash" title="Delete" onclick="modalAction(${todo_id},'/delete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
@@ -108,45 +111,23 @@ function formatDates(date){
     d = date.getDate() + "/" +date.getMonth() + "/"+year;
     return date = d;
 }
+
 function copyText( todo_id ) {
     var copyText = document.getElementById("todo-" + todo_id);
-    console.log(copyText);
     copyText.select();
     copyText.setSelectionRange(0, 99999); /* For mobile devices */
     navigator.clipboard.writeText(copyText.value);
     alert("Copied");
-  }
+}
 
-function csv() {
+function update(todo_id,mode,value) {
     var request = new XMLHttpRequest();
-    var requestURL = '/csv';
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
-    request.onload = function() {
-        var csv = request.response;       
-        printCsv(csv);
-
-    }
-}
-
-function printCsv(todos) {
-    let csv = '';
-    for (var i in todos ) {
-        // data
-        const todo_id = todos[i].todo_id;
-        const todo = todos[i].TODO;
-        const todo_createdDate = formatDates(todos[i].DATE_CREATED);
-        
-        var csvFileData = `[  
-            ['${todo_id}','${todo}', '${todo_createdDate}'];
-        ]`;
-        return csvFileData;
-    }
-}
-const addButt = document.getElementById('add-todo-btn');
-const addForm = document.getElementById('add-todo-form');
-addButt.addEventListener('click', function() {
-    console.log('clicked');
-    addForm.submit();
-});
+     var requestURL = '/update/' + todo_id + '/' + mode + '/' + value;
+     request.open('GET', requestURL);
+     request.responseType = 'json';
+     request.send();
+     request.onload = function() {
+        var todos = request.response;
+        get_todos();
+     }
+ }
