@@ -1,8 +1,8 @@
 
-get_todos()
-get_complete()
+getTodos()
+getComplete()
 
-function get_todos(order) {
+function getTodos(order) {
    var request = new XMLHttpRequest();
     var requestURL = '/get_todos';
     request.open('GET', requestURL);
@@ -15,7 +15,7 @@ function get_todos(order) {
     }
 }
 
-function get_complete(order) {
+function getComplete(order) {
      var request = new XMLHttpRequest();
      var requestURL = '/get_complete_todos';
      request.open('GET', requestURL);
@@ -47,7 +47,7 @@ function get_complete(order) {
         row += `
         <tr class="pc${colour}">
             <td class="todo-td">
-                <div class="todo-td" title="${todo}">${todo}</div>
+                <div class="todo-td" title="${todo}" id="todo-text-${todo_id}" onclick="changeTodo(${todo_id});" data-toggle="modal" data-target="#text-modal">${todo}</div>
                 <input type="text" class="todo-input" id="todo-${todo_id}" value="${todo} [${todo_createdDate}]">
             </td>
             <td>${todo_createdDate}</td>
@@ -76,7 +76,7 @@ function printCompleted(todos) {
         row += `
         <tr class="pc${colour}">
             <td class="todo-td">
-                <div class="todo-td">${todo}</div>
+                <div class="todo-td" id="todo-text${todo_id}">${todo}</div>
             </td>
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
@@ -100,6 +100,7 @@ function selectPalette(id) {
     palette.style.cursor = "pointer";
     form.action = '/palette/' + todo.value  + "/" + id;
 }
+
 function showPalette(todo_id) {
     var todo = document.getElementById("todo-id");
     todo.value = todo_id;
@@ -131,7 +132,15 @@ function update(todo_id,mode,value) {
      request.send();
      request.onload = function() {
         var todos = request.response;
-        get_todos();
-        get_complete();
+        getTodos();
+        getComplete();
      }
+ }
+
+ function changeTodo(todo_id) {
+    let text = document.getElementById('todo-text-' + todo_id).innerText;
+    let textarea = document.getElementById('todo-text');
+    let form = document.getElementById("text-inner-form");
+    textarea.value = text;
+    form.action = form.action + todo_id;
  }

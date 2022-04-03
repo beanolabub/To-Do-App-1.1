@@ -79,32 +79,46 @@ router.post('/palette/:todo/:id', (req, res) =>{
 });
 
 router.get('/update/:id/:mode/:value', (req, res) =>{
-    // progress & in/complete
     const todo_id = req.params.id;
     const todo_mode = req.params.mode;
     const todo_value = req.params.value;
-    console.log(todo_mode);
     let queryString = '';
     let string = '';
     if ( todo_mode == "progress"){
-        queryString = "UPDATE todos SET progress = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+        queryString = "UPDATE todos SET progress = ? WHERE todo_id = ?";
         string = [todo_value, todo_id];
     }
     else if ( todo_mode == "complete"){
-        queryString = "UPDATE todos SET COMPLETE = ?, DATE_COMPLETE = NOW() WHERE todo_id = ?"; //UPDATE STATEMENT
+        queryString = "UPDATE todos SET COMPLETE = ?, DATE_COMPLETE = NOW() WHERE todo_id = ?";
         string = [todo_value, todo_id];
     }
     else if ( todo_mode == "delete"){
-        queryString = "DELETE FROM todos WHERE todo_id = ?"; //UPDATE STATEMENT
+        queryString = "DELETE FROM todos WHERE todo_id = ?";
         string = [todo_id];
     }
     conn.query(queryString, string, (err, rows, fields) => {
         if (err){
-            console.log("failed to complete @ /" + todo_mode + "_update: " + todo_id + " " + err);
+            console.log("failed to complete mode" + todo_mode + "_update id:" + todo_id + "value:" + todo_value + " " + err);
         }
-        console.log("@ /update_" + todo_mode + " : with id " + todo_id);
+        console.log("Mode:" + todo_mode + " : with id " + todo_id + " and value " + todo_value + " updated");
         res.redirect('/');
     })
 });
+
+router.post('/change/:id', (req, res) =>{
+    var todo=req.body.text;
+    // let todo = document.getElementById('todo-text-' + todo_id).innerText;
+    // const todo = req.params.todo;
+    const todo_id = req.params.id;
+    const queryString = "UPDATE todos SET TODO = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+    conn.query(queryString, [todo, todo_id], (err, rows, fields) => {
+        if (err){
+            console.log("failed to complete text change: " + todo_id + " text: " + todo + " " + err);
+        }
+        console.log("@ /palette : with id: " + todo_id + " and text: " + todo + " updated");
+        res.redirect('/');
+    })
+});
+
    
 module.exports = router;
