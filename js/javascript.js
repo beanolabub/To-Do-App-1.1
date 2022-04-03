@@ -1,3 +1,4 @@
+
 get_todos()
 get_complete()
 
@@ -16,7 +17,7 @@ function get_todos(order) {
 
 function get_complete(order) {
      var request = new XMLHttpRequest();
-     var requestURL = '/complete_todos';
+     var requestURL = '/get_complete_todos';
      request.open('GET', requestURL);
      request.responseType = 'json';
      request.send();
@@ -41,7 +42,7 @@ function get_complete(order) {
         let progress = todos[i].progress;
         let progressVal = 1;
         let progressTxt = '';
-        if( progress === 1 ) { progressTxt = 'check-'; progressVal = 1 };
+        if( progress === 1 ) { progressTxt = 'check-'; progressVal = 0 };
         // create row
         row += `
         <tr class="pc${colour}">
@@ -53,8 +54,8 @@ function get_complete(order) {
             <td><i class="fa fa-${progressTxt}circle-o" title="Underway?" onclick="update(${todo_id},'progress',${progressVal})"></i></td>
             <td><img src="/images/palette.svg" class="fa palette" title="Choose colour" onclick="showPalette(${todo_id})" data-toggle="modal" data-target="#palette-modal" /></td>
             <td><i class="fa fa-clone" title="Copy todo" onclick="copyText(${todo_id})"></i></td>
-            <td><i class="fa fa-trash" title="Delete" onclick="modalAction(${todo_id},'/delete_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
-            <td><i class="fa fa-check" title="Complete" onclick="update(${todo_id},'complete',${progressVal})"></i></td>
+            <td><i class="fa fa-trash" title="Delete" onclick="update(${todo_id},'delete',0)"></i></td>
+            <td><i class="fa fa-check" title="Complete" onclick="update(${todo_id},'complete',1)"></i></td>
         </tr>`;
         table.innerHTML = (row);
 
@@ -70,19 +71,17 @@ function printCompleted(todos) {
         const todo = todos[i].TODO;
         const todo_createdDate = formatDates(todos[i].DATE_CREATED);
         const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
-        let progress = todos[i].progress;
-        let progressVal = 0;
-        if( progress === 1 ) { progressVal = 0 };
+        const colour = todos[i].colour;
         // create row
         row += `
-        <tr>
+        <tr class="pc${colour}">
             <td class="todo-td">
                 <div class="todo-td">${todo}</div>
             </td>
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
-            <td><i class="fa fa-archive" title="Archive" onclick="modalAction(${todo_id},'/archive_todo/')" data-toggle="modal" data-target="#form-modal"></i></td>
-            <td><i class="fa fa-undo" title="Incomplete" onclick="update(${todo_id},'complete',${progressVal})"></i></td>
+            <td><i class="fa fa-archive" title="Archive" onclick="update(${todo_id},'complete',3)"></i></td>
+            <td><i class="fa fa-undo" title="Incomplete" onclick="update(${todo_id},'complete',0)"></i></td>
         </tr>`;
         table.innerHTML = (row);
     }
@@ -124,6 +123,7 @@ function copyText( todo_id ) {
 }
 
 function update(todo_id,mode,value) {
+    if (confirm("Are you sure?") == false) return;
     var request = new XMLHttpRequest();
      var requestURL = '/update/' + todo_id + '/' + mode + '/' + value;
      request.open('GET', requestURL);
