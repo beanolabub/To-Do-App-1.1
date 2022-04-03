@@ -58,6 +58,68 @@ th {
   border: none !important;
 }
 
+tfoot {
+  border-radius: 0 0 2rem 2rem;
+}
+
+/* classes */
+.fa-check {
+  margin-left: 2rem;
+}
+
+.fa {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 600px;
+  margin: 1rem auto auto auto;
+}
+
+th a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+}
+
+th .fa {
+  float: right;
+}
+
+.th-sm {
+  width: 10px;
+}
+
+.th-date {
+  width: 100px;
+}
+
+@-webkit-keyframes enlarge {
+  from {
+    height: 1rem;
+  }
+  to {
+    height: 10rem;
+  }
+}
+
+@keyframes enlarge {
+  from {
+    height: 1rem;
+  }
+  to {
+    height: 10rem;
+  }
+}
+
+#add-todo-text:focus {
+  -webkit-animation: enlarge 1s;
+          animation: enlarge 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
 .palette {
   background-image: url("/images/palette.svg");
   height: 1rem;
@@ -130,64 +192,4 @@ th {
 .modal-body, .modal-footer {
   background: #e9b2e9;
 }
-
-/* $dark: #00a0e9; */
-/* classes */
-.fa {
-  font-weight: bold;
-  font-weight: 100;
-  cursor: pointer;
-}
-
-.fa-check {
-  margin-left: 2rem;
-}
-
-.container {
-  max-width: 600px;
-  margin: 1rem auto auto auto;
-}
-
-th a {
-  text-decoration: none;
-  cursor: pointer;
-  color: black;
-}
-
-th .fa {
-  float: right;
-}
-
-.th-sm {
-  width: 10px;
-}
-
-.th-date {
-  width: 100px;
-}
-
-@-webkit-keyframes enlarge {
-  from {
-    height: 1rem;
-  }
-  to {
-    height: 10rem;
-  }
-}
-
-@keyframes enlarge {
-  from {
-    height: 1rem;
-  }
-  to {
-    height: 10rem;
-  }
-}
-
-#add-todo-text:focus {
-  -webkit-animation: enlarge 1s;
-          animation: enlarge 1s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-}
-/*# sourceMappingURL=jk.css.map */
+/*# sourceMappingURL=styles.css.map */

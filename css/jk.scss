@@ -7,10 +7,11 @@
 /* classes */
 .fa{
     font-weight:bold;
+    font-weight: 100;
     cursor: pointer;
-    .fa-check{
-        margin-left: 2rem;
-    }
+}
+.fa-check{
+    margin-left: 2rem;
 }
 .container{
     max-width:600px;
