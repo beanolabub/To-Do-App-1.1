@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
+// get todo info from db
 router.get('/get_todos', (req, res) =>{
     const queryString = "SELECT * FROM todos WHERE complete = '0' ORDER BY DATE_CREATED DESC"
     conn.query(queryString, (err, rows, fields) =>{
@@ -30,6 +31,7 @@ router.get('/get_todos', (req, res) =>{
     })
 });
 
+// get completed todo info from db
 router.get('/get_complete_todos', (req, res) =>{
     const queryString = "SELECT * FROM todos WHERE complete = '1' ORDER BY DATE_CREATED DESC"
     conn.query(queryString, (err, rows, fields) =>{
@@ -41,6 +43,7 @@ router.get('/get_complete_todos', (req, res) =>{
     })
 });
 
+// insert todo info to db
 router.post('/add_todo', (req, res) =>{
     const todo = req.body.add_todo_input;
     const queryString = "INSERT INTO todos (todo) VALUES (?)";
@@ -53,6 +56,7 @@ router.post('/add_todo', (req, res) =>{
     })
 });
 
+// delete todo info from db
 router.post('/delete_todo/:id', (req, res) =>{
     const todo_id = req.params.id;
     const queryString = "DELETE FROM todos WHERE todo_id = ?"; //DELETE STATEMENT
@@ -65,10 +69,11 @@ router.post('/delete_todo/:id', (req, res) =>{
     })
 });
 
+// update todo colour in db
 router.post('/palette/:todo/:id', (req, res) =>{
     const todo_id = req.params.todo;
     const colour = req.params.id;
-    const queryString = "UPDATE todos SET colour = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+    const queryString = "UPDATE todos SET colour = ? WHERE todo_id = ?";
     conn.query(queryString, [colour, todo_id], (err, rows, fields) => {
         if (err){
             console.log("failed to complete @ /palette: " + todo_id + " " + colour + " " + err);
@@ -78,6 +83,7 @@ router.post('/palette/:todo/:id', (req, res) =>{
     })
 });
 
+// update todo progress / in/complete info in db
 router.get('/update/:id/:mode/:value', (req, res) =>{
     const todo_id = req.params.id;
     const todo_mode = req.params.mode;
@@ -105,12 +111,11 @@ router.get('/update/:id/:mode/:value', (req, res) =>{
     })
 });
 
+// update todo text in db
 router.post('/change/:id', (req, res) =>{
     var todo=req.body.text;
-    // let todo = document.getElementById('todo-text-' + todo_id).innerText;
-    // const todo = req.params.todo;
     const todo_id = req.params.id;
-    const queryString = "UPDATE todos SET TODO = ? WHERE todo_id = ?"; //UPDATE STATEMENT
+    const queryString = "UPDATE todos SET TODO = ? WHERE todo_id = ?";
     conn.query(queryString, [todo, todo_id], (err, rows, fields) => {
         if (err){
             console.log("failed to complete text change: " + todo_id + " text: " + todo + " " + err);
