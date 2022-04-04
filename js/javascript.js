@@ -76,7 +76,7 @@ function printCompleted(todos) {
         row += `
         <tr class="pc${colour}">
             <td class="todo-td">
-                <div class="todo-td" id="todo-text${todo_id}">${todo}</div>
+                <div class="todo-td" id="todo-text${todo_id}"><s>${todo}</s></div>
             </td>
             <td>${todo_createdDate}</td>
             <td>${todo_completedDate}</td>
