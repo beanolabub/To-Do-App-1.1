@@ -13,6 +13,13 @@
 .fa-check{
     margin-left: 2rem;
 }
+.fa-palette{
+    background-size: 100%;
+    width:1rem;
+    height:1rem;
+    display:block;
+    background-image: url(../images/palette.svg);
+}
 .container{
     max-width:600px;
     margin: 1rem auto auto auto;

@@ -1,22 +1,24 @@
-<div class="modal" id="form-modal" tabindex="-1">
+<!-- change text -->
+<div class="modal" id="text-modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Sure?</h5>
+        <h5 class="modal-title">Change text</h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-          Just checking you mean't to do that
-      </div>
-      <div class="modal-footer">
-          <form id="modal-inner-form" action="/action/" method="post">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Go -></button>
-          </form>
-      </div>
+      <form id="modal-inner-form" action="/change/" method="post">
+        <div class="modal-body">
+          <textarea class="form-control" name="text" id="todo-text"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Go -></button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+<!-- colour picker -->
 <div class="modal" id="palette-modal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -43,24 +45,5 @@
           </form>
       </div>
     </div>
-  </div>
-</div>
-<div class="modal" id="text-modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form id="text-inner-form" action="/change/" method="post">
-        <div class="modal-header">
-          <h5 class="modal-title">Update todo</h5>?</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <textarea rows="5" name="text" class="form-control" required id="todo-text"></textarea>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Choose</button>
-        </div>
-      </div>
-    </form>
   </div>
 </div>
