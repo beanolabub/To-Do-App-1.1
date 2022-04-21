@@ -16,7 +16,15 @@ function getConnection() {
 }
 
 router.get('/', (req, res) => {
-    res.render('index');
+    //Pass the authentication state to the page
+    console.log(req.oidc.isAuthenticated());
+    console.log(req.oidc.user);
+    res.render("index", {
+        title: "Larry the Listmaker", 
+        isAuthenticated: req.oidc.isAuthenticated(),
+        //get some user details
+        user: req.oidc.user, 
+    });
 });
 
 // get todo info from db
