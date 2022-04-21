@@ -1,16 +1,43 @@
 <body>
+    <nav>
+        <ul>
+            <% if (!isAuthenticated) { %>
+                <li><a href="/login/">login</a></li>
+            <%} else { %>
+                <li><a href="/logout/">logout</a></li>
+            <%    } %>
+        </ul>
+        <%if(user) { %>
+            <div class="profileInfo" style="float:left;">
+                <img src="<%=user.picture%>" />
+                <p class="name">
+                    Welcome <br>
+                    <%= user.nickname.charAt(0).toUpperCase() + user.nickname.slice(1) %>
+                </p>
+            </div>    
+        <% } %>
+    </nav>
     <div class="container">
         <header>
             <h1>Larry the Listmaker</h1>
-<%- include ('components/add_todo') %>
-        </header> 
-        <main>
-<%- include ('components/todo_table') %>
-<%- include ('components/completed_table') %>
-        </main>
-        <footer>
-<%- include ('footer') %>
-        </footer>
-    </div>
-    <%- include ('components/modal') %>
+            <% if (isAuthenticated) { %>            
+                    <%- include ('components/add_todo') %>
+                            </header> 
+                            <main>
+                    <%- include ('components/todo_table') %>
+                    <%- include ('components/completed_table') %>
+                            </main>
+                            <footer>
+                    <%- include ('footer') %>
+                            </footer>
+                        </div>
+                        <%- include ('components/modal') %>
+            <% } else { %>
+                    
+                    
+                        <p>Please <a href="/login/">login</a> to experience the full joy of Larry the Listmaker. 
+                        <br/> This is just the tip of the pleasure that awaits.
+                        </p>
+                    </header>
+            <% } %>
 </body>
