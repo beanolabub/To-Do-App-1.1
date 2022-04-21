@@ -6,13 +6,7 @@ Steps to initialise
 
 Initialised Node
 Install of required Node modules
-+Path
-+Express
-+Express-layout
-+Mysql
-+Router
-+Body-parser
-+EJS
+
 
 Created database - see attached .sql file
 
@@ -33,12 +27,9 @@ setup the function components of the app
  setup routes.js to get the data
  setup routes.js to add the actual to do items
  
- Sort out the CSS files. 
- Tasks Completed, done and delete.
- 
- To do:
- Date filtering
- 
+Added in task editing, rollback and archiving
+Styled dynamically
+Added User authentication with Auth0 
  
  
 
