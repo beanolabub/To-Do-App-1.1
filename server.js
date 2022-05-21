@@ -35,5 +35,5 @@ app.use(auth(config));
 app.use('/', routes);
 
 app.listen(3535, () => {
-    console.log('listening on port 3535');
+    console.log("listening on port 3535, I'll be the tall one in pink");
 });

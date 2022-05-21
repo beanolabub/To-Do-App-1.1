@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
 
 // get todo info from db
 router.get('/get_todos', (req, res) =>{
-    const queryString = "SELECT * FROM todos WHERE complete = '0' ORDER BY DATE_CREATED DESC"
+    const queryString = "SELECT * FROM todos WHERE status = 0 ORDER BY created DESC"
     conn.query(queryString, (err, rows, fields) =>{
         if (err) {
             console.log("failed to query @ /get_todo: " + err);
@@ -41,7 +41,7 @@ router.get('/get_todos', (req, res) =>{
 
 // get completed todo info from db
 router.get('/get_complete_todos', (req, res) =>{
-    const queryString = "SELECT * FROM todos WHERE complete = '1' ORDER BY DATE_CREATED DESC"
+    const queryString = "SELECT * FROM todos WHERE status = 1 ORDER BY created DESC"
     conn.query(queryString, (err, rows, fields) =>{
         if (err) {
             console.log("failed to query @ /complete_todo: " + err);
@@ -54,7 +54,7 @@ router.get('/get_complete_todos', (req, res) =>{
 // insert todo info to db
 router.post('/add_todo', (req, res) =>{
     const todo = req.body.add_todo_input;
-    const queryString = "INSERT INTO todos (todo) VALUES (?)";
+    const queryString = "INSERT INTO todos (text) VALUES (?)";
     conn.query(queryString, [todo], (err, rows, fields) => {
         if (err){
             console.log("failed to insert @ /add_todo: " + todo + " " + err);
@@ -123,7 +123,7 @@ router.get('/update/:id/:mode/:value', (req, res) =>{
 router.post('/change/:id', (req, res) =>{
     var todo=req.body.text;
     const todo_id = req.params.id;
-    const queryString = "UPDATE todos SET TODO = ? WHERE todo_id = ?";
+    const queryString = "UPDATE todos SET text = ? WHERE todo_id = ?";
     conn.query(queryString, [todo, todo_id], (err, rows, fields) => {
         if (err){
             console.log("failed to complete text change: " + todo_id + " text: " + todo + " " + err);

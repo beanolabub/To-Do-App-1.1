@@ -11,7 +11,7 @@ function getTodos(order) {
     request.send();
     request.onload = function() {
         var todos = request.response;
-        if (order === 1) todos.sort((a,b) => (a.TODO > b.TODO) ? 1 : ((b.TODO > a.TODO) ? -1 : 0));
+        if (order === 1) todos.sort((a,b) => (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0));
         printTodos(todos);
     }
 }
@@ -24,9 +24,9 @@ function getComplete(order) {
      request.send();
      request.onload = function() {
          var complete_todos = request.response;       
-         if (order === 3) complete_todos.sort((a,b) => (a.TODO > b.TODO) ? 1 : ((b.TODO > a.TODO) ? -1 : 0));
-        if (order === 4) complete_todos.sort((b,a) => (a.DATE_CREATED > b.DATE_CREATED) ? 1 : ((b.DATE_CREATED > a.DATE_CREATED) ? -1 : 0));
-         if (order === 5) complete_todos.sort((b,a) => (a.DATE_COMPLETE > b.DATE_COMPLETE) ? 1 : ((b.DATE_COMPLETE > a.DATE_COMPLETE) ? -1 : 0));
+         if (order === 3) complete_todos.sort((a,b) => (a.text > b.text) ? 1 : ((b.text > a.text) ? -1 : 0));
+        if (order === 4) complete_todos.sort((b,a) => (a.created > b.created) ? 1 : ((b.created > a.created) ? -1 : 0));
+         if (order === 5) complete_todos.sort((b,a) => (a.complete > b.complete) ? 1 : ((b.complete > a.complete) ? -1 : 0));
          printCompleted(complete_todos);
      }
  }
@@ -38,8 +38,8 @@ function getComplete(order) {
     for (var i in todos ) {
         // data
         const todo_id = todos[i].todo_id;
-        const todo = todos[i].TODO;
-        const todo_createdDate = formatDates(todos[i].DATE_CREATED);
+        const todo = todos[i].text;
+        const todo_createdDate = formatDates(todos[i].created);
         const colour = todos[i].colour;
         let progress = todos[i].progress;
         let progressVal = 1;
@@ -70,9 +70,9 @@ function printCompleted(todos) {
     for (var i in todos ) {
         // data
         const todo_id = todos[i].todo_id;
-        const todo = todos[i].TODO;
-        const todo_createdDate = formatDates(todos[i].DATE_CREATED);
-        const todo_completedDate = formatDates(todos[i].DATE_COMPLETE);
+        const todo = todos[i].text;
+        const todo_createdDate = formatDates(todos[i].created);
+        const todo_completedDate = formatDates(todos[i].complete);
         const colour = todos[i].colour;
         // create row
         row += `

@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `todos` (
   `todo_id` int(11) NOT NULL,
-  `TODO` mediumtext NOT NULL,
+  `text` mediumtext NOT NULL,
   `COMPLETE` tinyint(6) NOT NULL,
   `DATE_COMPLETE` datetime DEFAULT NULL ON UPDATE current_timestamp(),
   `LIST` varchar(85) NOT NULL,
-  `DATE_CREATED` datetime NOT NULL DEFAULT current_timestamp(),
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
   `colour` varchar(6) NOT NULL DEFAULT '0',
   `progress` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
