@@ -104,7 +104,7 @@ router.get('/update/:id/:mode/:value', (req, res) =>{
         string = [todo_value, id];
     }
     else if ( todo_mode == "complete"){
-        queryString = "UPDATE todos SET COMPLETE = ?, DATE_COMPLETE = NOW() WHERE id = ?";
+        queryString = "UPDATE todos SET status = ?, complete = NOW() WHERE id = ?";
         string = [todo_value, id];
     }
     else if ( todo_mode == "delete"){
@@ -113,7 +113,7 @@ router.get('/update/:id/:mode/:value', (req, res) =>{
     }
     conn.query(queryString, string, (err, rows, fields) => {
         if (err){
-            console.log("failed to complete mode" + todo_mode + "_update id:" + id + "value:" + todo_value + " " + err);
+            console.log("failed to complete mode " + todo_mode + "_update id: " + id + " value: " + todo_value + " " + err);
         }
         console.log("Mode:" + todo_mode + " : with id " + id + " and value " + todo_value + " updated");
         res.redirect('/');
