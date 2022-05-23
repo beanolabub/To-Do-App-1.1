@@ -6,6 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const { auth } = require('express-openid-connect');
 require('dotenv').config();
+require('dotenv').config({ path: '.env' });
+
 const middlewares = [
     layout(),
     express.static(path.join(__dirname, 'public')), 

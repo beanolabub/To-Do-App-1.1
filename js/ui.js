@@ -37,7 +37,7 @@ function getComplete(order) {
     let row = '';
     for (var i in todos ) {
         // data
-        const todo_id = todos[i].todo_id;
+        const todo_id = todos[i].id;
         const todo = todos[i].text;
         const todo_createdDate = formatDates(todos[i].created);
         const colour = todos[i].colour;
@@ -69,7 +69,7 @@ function printCompleted(todos) {
     let row = '';
     for (var i in todos ) {
         // data
-        const todo_id = todos[i].todo_id;
+        const todo_id = todos[i].id;
         const todo = todos[i].text;
         const todo_createdDate = formatDates(todos[i].created);
         const todo_completedDate = formatDates(todos[i].complete);

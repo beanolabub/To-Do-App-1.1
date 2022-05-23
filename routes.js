@@ -66,55 +66,56 @@ router.post('/add_todo', (req, res) =>{
 
 // delete todo info from db
 router.post('/delete_todo/:id', (req, res) =>{
-    const todo_id = req.params.id;
-    const queryString = "DELETE FROM todos WHERE todo_id = ?"; //DELETE STATEMENT
-    conn.query(queryString, [todo_id], (err, rows, fields) => {
+    const id = req.params.id;
+    const queryString = "DELETE FROM todos WHERE id = ?"; //DELETE STATEMENT
+    conn.query(queryString, [id], (err, rows, fields) => {
         if (err){
-            console.log("failed to delete @ /delete_todo: " + todo_id + " " + err);
+            console.log("failed to delete @ /delete_todo: " + id + " " + err);
         }
-        console.log("@ /delete_todo : with id " + todo_id + " deleted");
+        console.log("@ /delete_todo : with id " + id + " deleted");
         res.redirect('/');
     })
 });
 
 // update todo colour in db
 router.post('/palette/:todo/:id', (req, res) =>{
-    const todo_id = req.params.todo;
+    const id = req.params.todo;
     const colour = req.params.id;
-    const queryString = "UPDATE todos SET colour = ? WHERE todo_id = ?";
-    conn.query(queryString, [colour, todo_id], (err, rows, fields) => {
+    const queryString = "UPDATE todos SET colour = ? WHERE id = ?";
+    conn.query(queryString, [colour, id], (err, rows, fields) => {
         if (err){
-            console.log("failed to complete @ /palette: " + todo_id + " " + colour + " " + err);
+            console.log("failed to complete @ /palette: " + id + " " + colour + " " + err);
         }
-        console.log("@ /palette : with id " + todo_id + " and colour " + colour + " updated");
+        console.log("@ /palette : with id " + id + " and colour " + colour + " updated");
         res.redirect('/');
     })
 });
 
 // update todo progress / in/complete info in db
 router.get('/update/:id/:mode/:value', (req, res) =>{
-    const todo_id = req.params.id;
+    const id = req.params.id;
     const todo_mode = req.params.mode;
     const todo_value = req.params.value;
     let queryString = '';
     let string = '';
+    console.log(todo_mode);
     if ( todo_mode == "progress"){
-        queryString = "UPDATE todos SET progress = ? WHERE todo_id = ?";
-        string = [todo_value, todo_id];
+        queryString = "UPDATE todos SET progress = ? WHERE id = ?";
+        string = [todo_value, id];
     }
     else if ( todo_mode == "complete"){
-        queryString = "UPDATE todos SET COMPLETE = ?, DATE_COMPLETE = NOW() WHERE todo_id = ?";
-        string = [todo_value, todo_id];
+        queryString = "UPDATE todos SET COMPLETE = ?, DATE_COMPLETE = NOW() WHERE id = ?";
+        string = [todo_value, id];
     }
     else if ( todo_mode == "delete"){
-        queryString = "DELETE FROM todos WHERE todo_id = ?";
-        string = [todo_id];
+        queryString = "DELETE FROM todos WHERE id = ?";
+        string = [id];
     }
     conn.query(queryString, string, (err, rows, fields) => {
         if (err){
-            console.log("failed to complete mode" + todo_mode + "_update id:" + todo_id + "value:" + todo_value + " " + err);
+            console.log("failed to complete mode" + todo_mode + "_update id:" + id + "value:" + todo_value + " " + err);
         }
-        console.log("Mode:" + todo_mode + " : with id " + todo_id + " and value " + todo_value + " updated");
+        console.log("Mode:" + todo_mode + " : with id " + id + " and value " + todo_value + " updated");
         res.redirect('/');
     })
 });
@@ -122,13 +123,13 @@ router.get('/update/:id/:mode/:value', (req, res) =>{
 // update todo text in db
 router.post('/change/:id', (req, res) =>{
     var todo=req.body.text;
-    const todo_id = req.params.id;
-    const queryString = "UPDATE todos SET text = ? WHERE todo_id = ?";
-    conn.query(queryString, [todo, todo_id], (err, rows, fields) => {
+    const id = req.params.id;
+    const queryString = "UPDATE todos SET text = ? WHERE id = ?";
+    conn.query(queryString, [todo, id], (err, rows, fields) => {
         if (err){
-            console.log("failed to complete text change: " + todo_id + " text: " + todo + " " + err);
+            console.log("failed to complete text change: " + id + " text: " + todo + " " + err);
         }
-        console.log("@ /palette : with id: " + todo_id + " and text: " + todo + " updated");
+        console.log("@ /palette : with id: " + id + " and text: " + todo + " updated");
         res.redirect('/');
     })
 });
